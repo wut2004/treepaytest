@@ -22,6 +22,7 @@ public class TodoController {
         todoRepository.save(todotask);
         return ok(Collections.singletonMap("response", "add success"));
     }
+
     @RequestMapping(method = RequestMethod.PUT, value = "/update/{id}")
     public ResponseEntity<?> updateTodo(@PathVariable Long id, @RequestBody Todo updatetodo) {
         Todo todo = todoRepository.findOne(id);
