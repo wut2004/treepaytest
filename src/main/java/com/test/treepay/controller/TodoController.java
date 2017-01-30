@@ -2,12 +2,16 @@ package com.test.treepay.controller;
 
 import com.test.treepay.domain.Todo;
 import com.test.treepay.repository.TodoRepository;
+import org.hibernate.annotations.SourceType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.http.ResponseEntity.ok;
 
 
@@ -20,6 +24,11 @@ public class TodoController {
     @RequestMapping(method = RequestMethod.POST, value = "/addTodo")
     public ResponseEntity<?> addTodo(@RequestBody Todo todotask) {
         todoRepository.save(todotask);
+        return ok(Collections.singletonMap("response", "add success"));
+    }
+    @RequestMapping(method = RequestMethod.POST,value = "/addTo")
+    public ResponseEntity<?> addTodo(@RequestBody String encodedBase64Pdf){
+        System.out.println("=========> "+ encodedBase64Pdf);
         return ok(Collections.singletonMap("response", "add success"));
     }
 
